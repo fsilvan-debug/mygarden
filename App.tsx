@@ -1,9 +1,9 @@
 
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import GardenCanvas from './components/GardenCanvas.tsx';
-import Toolbar from './components/Toolbar.tsx';
-import { GardenObject, ObjectType } from './types.ts';
-import { COLORS, OBJECT_NAMES, GARDEN_DIMENSIONS, SCALE } from './constants.tsx';
+import GardenCanvas from './components/GardenCanvas';
+import Toolbar from './components/Toolbar';
+import { GardenObject, ObjectType } from './types';
+import { COLORS, OBJECT_NAMES, GARDEN_DIMENSIONS, SCALE } from './constants';
 
 const STORAGE_KEY = 'garden_plan_data';
 
