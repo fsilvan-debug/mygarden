@@ -1,10 +1,9 @@
 
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import GardenCanvas from './components/GardenCanvas';
-import Toolbar from './components/Toolbar';
-import { GardenObject, ObjectType } from './types';
-import { COLORS, OBJECT_NAMES, GARDEN_DIMENSIONS, SCALE } from './constants';
-import { getGardenSuggestions } from './services/geminiService';
+import GardenCanvas from './components/GardenCanvas.tsx';
+import Toolbar from './components/Toolbar.tsx';
+import { GardenObject, ObjectType } from './types.ts';
+import { COLORS, OBJECT_NAMES, GARDEN_DIMENSIONS, SCALE } from './constants.tsx';
 
 const STORAGE_KEY = 'garden_plan_data';
 
@@ -13,7 +12,6 @@ const App: React.FC = () => {
   const [history, setHistory] = useState<GardenObject[][]>([]);
   const [redoStack, setRedoStack] = useState<GardenObject[][]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
   const canvasRef = useRef<SVGSVGElement>(null);
 
   // Load from LocalStorage
@@ -120,29 +118,6 @@ const App: React.FC = () => {
     document.body.removeChild(downloadLink);
   };
 
-  const handleSuggest = async () => {
-    setIsLoading(true);
-    try {
-      const suggestions = await getGardenSuggestions(GARDEN_DIMENSIONS);
-      saveState(objects);
-      const newObjects: GardenObject[] = suggestions.map((s: any) => ({
-        id: Math.random().toString(36).substr(2, 9),
-        type: s.type as ObjectType,
-        x: s.x,
-        y: s.y,
-        width: s.width,
-        height: s.height,
-        label: s.label,
-        color: COLORS[s.type as ObjectType] || '#ccc'
-      }));
-      setObjects(newObjects);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   const selectedObject = objects.find(o => o.id === selectedId) || null;
 
   return (
@@ -153,8 +128,6 @@ const App: React.FC = () => {
         onUpdateObject={updateObject}
         selectedObject={selectedObject}
         objects={objects}
-        onSuggest={handleSuggest}
-        isLoading={isLoading}
       />
       
       <div className="flex-1 flex flex-col relative overflow-hidden bg-zinc-300">
