@@ -1,7 +1,7 @@
 
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import GardenCanvas from './components/GardenCanvas';
-import Toolbar from './components/Toolbar';
+import GardenCanvas from './GardenCanvas';
+import Toolbar from './Toolbar';
 import { GardenObject, ObjectType } from './types';
 import { COLORS, OBJECT_NAMES, GARDEN_DIMENSIONS, SCALE } from './constants';
 
@@ -99,7 +99,6 @@ const App: React.FC = () => {
     const serializer = new XMLSerializer();
     let source = serializer.serializeToString(svg);
     
-    // Ensure XML declaration
     if (!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)) {
       source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
     }
@@ -154,7 +153,6 @@ const App: React.FC = () => {
               onClick={exportImage}
               className="px-6 py-3 text-lg font-black text-white bg-blue-600 rounded-2xl hover:bg-blue-700 shadow-md transition-all active:scale-95 flex items-center gap-2"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
               שמירת תמונה
             </button>
 
@@ -162,7 +160,6 @@ const App: React.FC = () => {
               onClick={clearAll}
               className="px-6 py-3 text-lg font-black text-white bg-red-500 rounded-2xl hover:bg-red-600 shadow-md transition-all active:scale-95 flex items-center gap-2"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
               איפוס
             </button>
           </div>
@@ -187,7 +184,7 @@ const App: React.FC = () => {
           </div>
           <div className="flex items-center gap-4">
             <div className="text-emerald-950 bg-emerald-100 px-4 py-1 rounded-xl font-black border border-emerald-200">פריטים: {objects.length}</div>
-            <div className="text-zinc-400 italic">מוכן להעלאה ל-GitHub</div>
+            <div className="text-zinc-400 italic">מוכן להפעלה</div>
           </div>
         </footer>
       </div>
