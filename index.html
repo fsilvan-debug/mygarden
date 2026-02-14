@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מתכנן הגינה שלי | אפליקציה לימודית</title>
+    
+    <!-- SEO and Social Sharing Meta Tags -->
+    <meta name="description" content="אפליקציה אינטראקטיבית לתכנון גינה, חישוב חומרים ועיצוב בעזרת בינה מלאכותית.">
+    <meta property="og:title" content="מתכנן הגינה שלי">
+    <meta property="og:description" content="בואו לתכנן את הגינה המושלמת שלכם! כלי קל ומהנה לתלמידים.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#10b981">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Assistant', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+        }
+        /* Custom scrollbar for better app feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 10px;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
